@@ -12,12 +12,13 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 	private boolean first;
 	private HashSet<String> keys = new HashSet<String>();
 	// pad
-	private double SPEED = 1, vx=1, vy=1;
-	private int padH = 10, padW = 80;
+	private double SPEED = 4, vx=1, vy=1;
+	private int padH = 10, padW = 140;
+	private int blockX = 300, blockY = 200;
 	private int bottomPadX;
 	private int inset = 10;
 	// ball
-	private double angle = 45*Math.PI/180;
+	private double angle = 35*Math.PI/180;
 	private double ballX, ballY, ballSize = 20;
 	// score
 	private int scoreBottom;
@@ -56,14 +57,41 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 		// scores
 		String scoreB = "Bottom: " + new Integer(scoreBottom).toString();
 		g2d.drawString(scoreB, 10, height / 2);
+		
+		// Block1
+		Rectangle2D block = new Rectangle(blockX, blockY, 150, 150);
+		g2d.fill(block);
 
 	}
-	double velX=1*Math.cos(angle), velY=0;
+	double velX=3*Math.cos(angle), velY=2.3;
 	@Override
 	
 	public void actionPerformed(ActionEvent e) {
 		double g=0.0098;
 		velY+=g;
+		
+		//block
+		if (ballY - blockY + 20 <= 3 && velY > 0 && ballY - blockY+20 >= 0) {
+			if (ballX + ballSize >= blockX && ballX <= blockX + 150) {
+				velY = -velY;
+			}
+		}
+		if (ballY - blockY - 150 <= 3 && velY < 0 && ballY - blockY - 150 >=0) {
+			if (ballX + ballSize >= blockX && ballX <= blockX + 150) {
+				velY = -velY;
+			}
+		}
+		if (ballX - blockX - 150 <= 3 && ballX - blockX - 150 >=0) {
+			if (ballY + ballSize >= blockY && ballY <= blockY + 150) {
+				velX = -velX;
+			}
+		}
+		if (ballX - blockX +20 <= 3  && ballX - blockX +20 >=0) {
+			if (ballY + ballSize >= blockY && ballY <= blockY + 150) {
+				velX = -velX;
+			}
+		}
+		
 		// side walls
 		
 		if (ballX < 0 || ballX > width - ballSize) {

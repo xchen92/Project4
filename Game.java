@@ -2,10 +2,17 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 public class Game extends JPanel implements KeyListener, ActionListener {
@@ -30,6 +37,8 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 	private int scoreBottom, lev=1, countDown = 20;
 	double time=0;
 	int lives=3;
+	
+	public static Clip clp;
 	
 	JLabel L1 = new JLabel("Press left or right key to start the game!");
 	
@@ -342,6 +351,23 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 			keys.remove("RIGHT");
 			break;
 		}
+
+	}
+	
+	public static void sound(File s) { //method to play sounds 
+		
+		try {
+	         AudioInputStream audioIn = AudioSystem.getAudioInputStream(s);              
+	         clp = AudioSystem.getClip();
+	         clp.open(audioIn);
+	         clp.start();
+	      } catch (UnsupportedAudioFileException e) {
+	         e.printStackTrace();
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      } catch (LineUnavailableException e) {
+	         e.printStackTrace();
+	      }
 
 	}
 	public static void main(String[] args) {

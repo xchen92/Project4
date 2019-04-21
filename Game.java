@@ -38,6 +38,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 	double time=0;
 	int lives=3;
 	
+	//sound
 	public static Clip clp;
 	
 	JLabel L1 = new JLabel("Press left or right key to start the game!");

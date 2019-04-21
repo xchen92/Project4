@@ -38,7 +38,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
 		first = true;
-		t.setInitialDelay(100);
+		t.setInitialDelay(100);//after timer started delay before the first event
 		add(L1,BorderLayout.NORTH);
 		
 

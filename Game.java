@@ -4,6 +4,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
@@ -40,6 +41,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 	
 	//sound
 	public static Clip clp;
+	public String filename;
 	
 	JLabel L1 = new JLabel("Press left or right key to start the game!");
 	
@@ -355,10 +357,11 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 
 	}
 	
-	public static void sound(File s) { //method to play sounds 
-		
-		try {
-	         AudioInputStream audioIn = AudioSystem.getAudioInputStream(s);              
+	public void sound(String filename) { //method to play sounds 
+			try {
+			// Open an audio input stream.
+	         URL url = this.getClass().getClassLoader().getResource(filename);	//FIXME	
+	         AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);              
 	         clp = AudioSystem.getClip();
 	         clp.open(audioIn);
 	         clp.start();

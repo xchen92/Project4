@@ -236,7 +236,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 			ballX = 20;
 			ballY = 20;
 			lives-=1;
-			//sound("come_on.wav");
+			sound("come_on.wav");
 			t.stop();
 			t2.stop();
 			

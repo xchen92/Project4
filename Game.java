@@ -362,11 +362,11 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 	}
 	
 	public void sound(String filename) { //method to play sounds 
-			try {
+			//try {
 			// Open an audio input stream.
 	         URL url = this.getClass().getClassLoader().getResource(filename);	//FIXME	
 	         System.out.print(url);
-	         AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);              
+	       /*  AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);              
 	         clp = AudioSystem.getClip();
 	         clp.open(audioIn);
 	         clp.start();
@@ -376,7 +376,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 	         e.printStackTrace();
 	      } catch (LineUnavailableException e) {
 	         e.printStackTrace();
-	      }
+	      }*/
 
 	}
 	public static void main(String[] args) {

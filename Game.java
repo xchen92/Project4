@@ -119,7 +119,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 		
 		// Game over
 		if(lives<=0) {
-			//sound("oh_baby.wav");
+			sound("oh_baby.wav");
 			String over = "Game Over! Your final score is: " + new Integer(scoreBottom).toString();
 			g2d.drawString(over, width/2-100, height / 20);
 			String again = "Press left or right to start another game!";
@@ -133,6 +133,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 			countDown = 20;
 			lives = 3;
 			scoreBottom = 0;
+			lev = 0;
 		}
 		if(countDown==20&&lev<=3&&lives!=0&&velY!=0.7) {
 			String nextLev = "Next Level: " + new Integer(lev).toString() + ", ball speed will be faster! Get ready!";
@@ -140,7 +141,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 		
 		}
 		if(lev>3&&lives!=0) {
-			//sound("so_good.wav");
+			sound("so_good.wav");
 			String Beat = "You have beaten the game! Your final score is: "+ new Integer(scoreBottom).toString();
 			g2d.drawString(Beat, width/2-100, height / 20);
 			String again = "Press left or right to start another game!";
@@ -222,7 +223,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 		
 		// side walls
 		
-		if (ballX < 0 || ballX > width - ballSize) {
+		if (ballX < 1 || ballX > width - ballSize-2) {
 			velX = -velX;
 		}
 
@@ -294,6 +295,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 		// bottom pad
 		if (ballY + ballSize >= height - padH - inset && velY > 0) {
 			if (ballX + ballSize >= bottomPadX && ballX <= bottomPadX + padW) {
+				sound("oh_baby.wav");
 				++ scoreBottom;
 				velY = -velY;
 
@@ -361,23 +363,16 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 
 	}
 	
-	public void sound(String filename) { //method to play sounds 
-			//try {
-			// Open an audio input stream.
-	         URL url = this.getClass().getClassLoader().getResource(filename);	//FIXME	
-	         System.out.print(url);
-	       /*  AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);              
-	         clp = AudioSystem.getClip();
-	         clp.open(audioIn);
-	         clp.start();
-	      } catch (UnsupportedAudioFileException e) {
-	         e.printStackTrace();
-	      } catch (IOException e) {
-	         e.printStackTrace();
-	      } catch (LineUnavailableException e) {
-	         e.printStackTrace();
-	      }*/
-
+	public void sound(String filename){
+		try {
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filename));
+			Clip clip = AudioSystem.getClip( );
+			clip.open(audioInputStream);
+			clip.start( );
+		}
+		catch(Exception e)  {
+			e.printStackTrace( );
+		}
 	}
 	public static void main(String[] args) {
 		JFrame test = new JFrame("Game");

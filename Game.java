@@ -135,9 +135,9 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 			scoreBottom = 0;
 		}
 		if(countDown==20&&lev<=3&&lives!=0&&velY!=0.7) {
-			sound("ah_yes.wav");
 			String nextLev = "Next Level: " + new Integer(lev).toString() + ", ball speed will be faster! Get ready!";
 			g2d.drawString(nextLev, width/2-100, height / 20);
+		
 		}
 		if(lev>3&&lives!=0) {
 			sound("so_good.wav");
@@ -236,6 +236,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 			ballX = 20;
 			ballY = 20;
 			lives-=1;
+			sound("come_on.wav");
 			t.stop();
 			t2.stop();
 			

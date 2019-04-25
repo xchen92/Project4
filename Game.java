@@ -365,6 +365,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 			try {
 			// Open an audio input stream.
 	         URL url = this.getClass().getClassLoader().getResource(filename);	//FIXME	
+	         System.out.print(url);
 	         AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);              
 	         clp = AudioSystem.getClip();
 	         clp.open(audioIn);

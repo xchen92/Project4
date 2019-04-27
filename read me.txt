@@ -1,0 +1,17 @@
+project 4
+
+/*
+ * Name: Xinyi Chen, Shengyuan Huang, Yize Jin 
+ * NetID: xchen92, shuang48, yjin25
+ * project2
+ * LAB MW 18:15-19:30 (Xinyi) MW 1650-1805(Shengyuan) MW 1650-1805(Yize)
+ * Xinyi Chen and Shengyuan Huang, and Yize Jin worked together on this assignment.
+ */
+
+We choose the game Lob Pong as our final project, which allows the game player to use a paddle that can move horizontally in order to catch the bouncing ball. The goal is to allow the ball fall onto the bottom side of the window. The game mechanism is that for each round of game, the game player has three lives, which means they will have three balls to move. Also, there are three levels in total, which will vary the difficulty of the game by increasing the speed of the ball. There will be an additional timer that counts down from 15 seconds. And for every time the ball renounces on the paddle, there will earn one point. As long as the game player makes the ball not fall onto the bottom, the game will turn into an advanced level. Once the player has made the third level, the game will end. We use randomness on setting three obstacles on each level of game, which are square-shaped and will reflect the ball to move in a different path. We also create three sound effects in three different situations so that when the player loses one life, upgrade to a higher level, or win the game, there will be a different sound effect relating to that.
+
+Extra credits are met on:
+1 Add sound effects in three different scenarios
+2 Create stationary obstacles that will reflect the ball into a different moving path
+
+All of codes are in the src folder.
